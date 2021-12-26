@@ -1,1 +1,4 @@
-
+Each single .dat file can work by itself, if using .xls files please make sure both nodes and elements files are uploaded to the data folder.
+- note that .dat files are automatically created by ANSYS workbench and any other format of FE data files would cause errors, we (as in the royal we) strongly reccommend creating your own xls files.
+- xls node file type must include 3 columns, each representing the x, y,z axis accordingly.
+- xls element files must include triangular elements, each row must have 2 node numbers, not that all elements must be either clocwise or counter-clockwise represented.
