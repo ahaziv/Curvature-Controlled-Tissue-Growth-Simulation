@@ -1,27 +1,28 @@
 %% This is the main code for simulating CCTG 
+% This code runs the CCTG simulation and will plot each iteration geometry while doing so. In order to work file path must be re-written in the first two lines, so the program may find all relevant functions and data.
 clear all; close all; clc;
-addpath('C:\Documents\MATLAB\Thesis\3D CCTG\Shapes data')
-addpath('C:\Documents\MATLAB\Thesis\3D CCTG\pics')
+addpath('C:\Documents\MATLAB\Thesis\3D CCTG\Shapes data')       % file paths
+addpath('C:\Documents\MATLAB\Thesis\3D CCTG\pics')              % file paths
 
 %% general parameters
-NumIter = 5000;              % number of iteration steps
+NumIter = 5000;                                                 % number of iteration steps
 % TimeLimit = 4.07e-09;
-TimeLimit = 1e6;
+TimeLimit = 1e6;                    % simulation time limit, note that it can greatly vary (orders of magnitude) between geometries
 
-VGrowthRateLim = 0.5*10^-2;
-LFactor = 0.3;             % Lambda multiplication factor
-DeltaTheta = 0.13;          % the square of the minimal angle for remeshing 
-FlagBoundary = 1;           % this flag tells the program wether to impose boundary conditions
-TimeFactor = 1;%14*10^-14;     % this number represents the biological growth factor [m^2/sec]
+VGrowthRateLim = 0.5*10^-2;         % a growth limit in to detect shape convergence, can be set to zero but then may require a manual termination
+LFactor = 0.3;                      % Lambda multiplication factor
+DeltaTheta = 0.13;                  % the square of the minimal angle for remeshing 
+FlagBoundary = 1;                   % this flag tells the program wether to impose boundary conditions
+TimeFactor = 1;%14*10^-14;          % this number represents the biological growth factor [m^2/sec]
 
-FlagAnaSol = 0;
-AnaSolution = 0;            % initial value for variable, should always be set as zero
+FlagAnaSol = 0;                     % can be set to 1 in cases an analytical solution detection is desired
+AnaSolution = 0;                    % initial value for variable, should always be set as zero
 if FlagAnaSol
     AnalyticParam = struct('GenEps', 0.5, 'SphereEps', 0.2, 'CylinderEps', 0.5);
 end
 
-FlagDispInitGeom = 1;
-FlagVideo = 0;              % this flag tells the program wether to record the run
+FlagDispInitGeom = 1;               % displays a half transparent plot of the initial geometry througout the run 
+FlagVideo = 0;                      % this flag tells the program wether to record the run adn produce a video
 if FlagVideo
     TotVideoLength = 20;
     images = cell(NumIter,1);
