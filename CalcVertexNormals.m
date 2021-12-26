@@ -1,8 +1,5 @@
 function [VertexNormals,Avertex,Acorner,up,vp]=CalcVertexNormals(Faces,Vertices,N)
 %% Summary
-%Author: Itzik Ben Shabat
-%Last Update: July 2014
-
 % summary: CalcVertexNormals calculates the normals and voronoi areas at each vertex
 % INPUT:
 % FV - triangle mesh in face vertex structure
