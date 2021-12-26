@@ -1,8 +1,5 @@
 function [FaceNormals]=CalcFaceNormals(Faces, Vertices)
 %% Summary
-%Author: Itzik Ben Shabat
-%Last Update: July 2014
-
 %CalcFaceNormals recives a list of vrtexes and faces in FV structure
 % and calculates the normal at each face and returns it as FaceNormals
 %INPUT:
